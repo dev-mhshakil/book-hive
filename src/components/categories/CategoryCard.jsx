@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
 const CategoryCard = ({ item }) => {
-  console.log(item);
-
   return (
     <div className="w-full p-6 rounded-md shadow-md">
       <img

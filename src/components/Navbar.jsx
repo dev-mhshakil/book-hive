@@ -1,8 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+
+  const handleLogout = async () => {
+    await logOut();
+  };
+
   return (
     <div className="navbar bg-secondary sticky z-10">
       <div className="navbar-start">
@@ -32,132 +37,93 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <NavLink
-                exact
-                to="/"
-                activeClassName="active bg-primary"
-                className="nav-link"
-              >
+              <Link to="/" className="">
                 Home
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink
-                to="/books"
-                activeClassName="active bg-primary"
-                className="nav-link"
-              >
+              <Link to="/books" className="">
                 Books
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink
-                to="/reading-list"
-                activeClassName="active bg-primary"
-                className="nav-link"
-              >
+              <Link to="/reading-list" className="">
                 My Reading List
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink
-                to="/about"
-                activeClassName="active bg-primary"
-                className="nav-link"
-              >
+              <Link to="/about" className="">
                 About Us
-              </NavLink>
+              </Link>
             </li>
-            <li>
-              <NavLink
-                to="/login"
-                activeClassName="active bg-primary"
-                className="nav-link"
-              >
-                Login
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/register"
-                activeClassName="active bg-primary"
-                className="nav-link"
-              >
-                Register
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard"
-                activeClassName="active bg-primary"
-                className="nav-link"
-              >
-                Dashboard
-              </NavLink>
-            </li>
+            {!user && (
+              <>
+                <li>
+                  <Link to="/login" className="">
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/register" className="">
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
+            {user && (
+              <>
+                <li>
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
+                <li>
+                  <button onClick={handleLogout}>Logout</button>
+                </li>
+              </>
+            )}
           </ul>
         </div>
-        <NavLink to="/" className="btn btn-ghost text-xl gap-0 text-white">
+        <Link to="/" className="btn btn-ghost text-xl gap-0 text-white">
           Book
           <span className="text-primary">Hive</span>
-        </NavLink>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex ">
         <ul className="menu menu-horizontal px-1 text-white">
           <li>
-            <NavLink
-              exact
-              to="/"
-              activeClassName="active bg-primary"
-              className="nav-link"
-            >
+            <Link exact to="/" className="visited:text-white">
               Home
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
-              to="/books"
-              activeClassName="active bg-primary"
-              className="nav-link"
-            >
+            <Link to="/books" className="visited:text-white">
               Books
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
-              to="/reading-list"
-              activeClassName="active bg-primary"
-              className="nav-link"
-            >
+            <Link to="/reading-list" className="visited:text-white">
               My Reading List
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
-              to="/about"
-              activeClassName="active bg-primary"
-              className="nav-link"
-            >
+            <Link to="/about" className="visited:text-white">
               About Us
-            </NavLink>
+            </Link>
           </li>
           {!user && (
             <>
               <li>
-                <NavLink to="/login" activeClassName="active">
-                  Login
-                </NavLink>
+                <Link to="/login">Login</Link>
               </li>
               <li>
-                <NavLink
+                <Link
                   to="/register"
-                  activeClassName="active "
+
                   //   className={({ isActive }) =>
                   //     isActive ? "bg-primary text-white" : " text-white"
                   //   }
                 >
                   Register
-                </NavLink>
+                </Link>
               </li>
             </>
           )}
@@ -165,10 +131,10 @@ const Navbar = () => {
           {user && (
             <>
               <li>
-                <NavLink>Dashboard</NavLink>
+                <Link to="/dashboard">Dashboard</Link>
               </li>
               <li>
-                <NavLink to={() => logOut()}>Logout</NavLink>
+                <button onClick={handleLogout}>Logout</button>
               </li>
             </>
           )}

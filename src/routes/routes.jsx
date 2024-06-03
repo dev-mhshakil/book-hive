@@ -6,6 +6,9 @@ import Register from "../pages/Register";
 import ErrorPage from "../pages/ErrorPage";
 import Books from "../pages/Books";
 import BookDetails from "../components/books/BookDetails";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Dashboard from "../pages/Dashboard";
+import ManageAllBooks from "../components/dashboard/ManageAllBooks";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,21 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+        path: "manage-all-books",
+        element: <ManageAllBooks />,
       },
     ],
   },

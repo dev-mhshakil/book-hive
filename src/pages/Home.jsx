@@ -12,7 +12,6 @@ const Home = () => {
       const categoriesRes = await fetch("http://localhost:5000/categories");
       const categoriesData = await categoriesRes.json();
       setCategories(categoriesData);
-      console.log(categoriesData);
     }
 
     load();

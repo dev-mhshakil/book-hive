@@ -45,18 +45,19 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    return signOut().then(() => setUser(null));
+    return signOut(auth).then(() => setUser(null));
   };
 
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
-      if (user) {
+      if (currentUser) {
         setUser(currentUser);
         setLoading(false);
       } else {
         setLoading(false);
       }
     });
+
     return () => {
       return unsubcribe();
     };
