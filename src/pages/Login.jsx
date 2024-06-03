@@ -23,15 +23,18 @@ const Login = () => {
     login(email, password).then((result) => console.log(result));
   };
   useEffect(() => {
-    if (user) {
+    if (user?.email) {
       navigate(from, { replace: true });
     }
   }, [user, navigate, from]);
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
+      <h1 className="text-2xl md:text-4xl lg:text-4xl text-center uppercase text-semibold mt-8">
+        Login
+      </h1>
       <form
         onSubmit={handleLogin}
-        className="w-full md:max-w-sm lg:max-w-sm mx-auto mt-40 p-4"
+        className="w-full md:max-w-sm lg:max-w-sm mx-auto mt-4 p-4"
       >
         <div className="mb-5">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">

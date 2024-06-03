@@ -4,16 +4,17 @@ import GoogleLogin from "../components/login_registration/GoogleLogin";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+import axios from "axios";
 
 const Register = () => {
-  const { signIn, user } = useAuth();
+  const { register, user } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location?.state?.from?.pathname || "/";
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -22,7 +23,23 @@ const Register = () => {
     const confirmPassword = form.confirmPassword.value;
 
     if (password === confirmPassword) {
-      signIn(email, password).then((result) => console.log(result));
+      await register(email, password).then((result) => {
+        if (result?.user?.email) {
+          const userInfo = {
+            email: result?.user?.email,
+            name: result?.user?.displayName,
+          };
+          axios
+            .post("http://localhost:5000/user", userInfo)
+            .then(function (response) {
+              if (response === 400) {
+                toast.error("Email already registered.");
+              } else if (response === 201) {
+                toast.success("Registration Complete.");
+              }
+            });
+        }
+      });
     } else {
       return toast.error("Password didn't matched");
     }
@@ -34,10 +51,13 @@ const Register = () => {
     }
   }, [user, from, navigate]);
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
+      <h1 className="text-2xl md:text-4xl lg:text-4xl text-center uppercase text-semibold mt-8">
+        Register
+      </h1>
       <form
         onSubmit={handleRegister}
-        className="w-full md:max-w-sm lg:max-w-sm p-4 mx-auto mt-40"
+        className="w-full md:max-w-sm lg:max-w-sm p-4 mx-auto mt-8"
       >
         <div className="mb-5">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">

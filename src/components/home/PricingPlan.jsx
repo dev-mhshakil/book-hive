@@ -4,7 +4,7 @@ const PricingPlan = () => {
       <div className="container p-4 mx-auto sm:p-10">
         <div className=" mb-12 space-y-4 text-center">
           <p className="uppercase text-sm">Pricing</p>
-          <h1 className="text-4xl mb-12 font-semibold leading-tight">
+          <h1 className="text-4xl mb-12 font-semibold leading-tight text-primary">
             Choose Your Plan
           </h1>
           <p className="px-4 sm:px-8 lg:px-24">

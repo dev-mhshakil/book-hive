@@ -1,7 +1,7 @@
 const Banner = () => {
   return (
     <div className="px-6 mb-12 flex flex-col w-full md:w-3/4 lg:w-3/4 mx-auto justify-center">
-      <h1 className="text-2xl md:text-4xl lg:text-4xl text-center font-bold pb-4 text-primary">
+      <h1 className="text-2xl md:text-4xl lg:text-4xl text-center font-semibold pb-4 text-primary">
         Welcome to our Book Review and Recommendation Platform
       </h1>
       <p className="text-center">

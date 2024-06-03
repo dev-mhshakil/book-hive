@@ -1,11 +1,29 @@
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const GoogleLogin = () => {
   const { googleLogin } = useAuth();
 
   const handleGoogleLogin = () => {
-    googleLogin().then((result) => console.log(result));
+    googleLogin().then((result) => {
+      if (result?.user?.email) {
+        const userInfo = {
+          email: result?.user?.email,
+          name: result?.user?.displayName,
+        };
+        axios
+          .post("http://localhost:5000/user", userInfo)
+          .then(function (response) {
+            if (response === 400) {
+              toast.error("Email already registered.");
+            } else if (response === 201) {
+              toast.success("Registration Complete.");
+            }
+          });
+      }
+    });
   };
   return (
     <button
