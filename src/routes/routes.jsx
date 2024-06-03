@@ -9,6 +9,8 @@ import BookDetails from "../components/books/BookDetails";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/Dashboard";
 import ManageAllBooks from "../components/dashboard/ManageAllBooks";
+import EditBook from "../components/dashboard/EditBook";
+import AddBook from "../components/dashboard/AddBook";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,14 @@ const router = createBrowserRouter([
       {
         path: "manage-all-books",
         element: <ManageAllBooks />,
+      },
+      {
+        path: "edit-book/:id",
+        element: <EditBook />,
+      },
+      {
+        path: "add-book",
+        element: <AddBook />,
       },
     ],
   },

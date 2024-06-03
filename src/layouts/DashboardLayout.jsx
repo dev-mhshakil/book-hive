@@ -33,13 +33,13 @@ const DashboardLayout = () => {
                 <Link to="manage-all-books">Manage All Books</Link>
               </li>
               <li>
-                <Link>Manage All Categories</Link>
+                <Link to="manage-all-categories">Manage All Categories</Link>
               </li>
               <li>
-                <Link>Add Books</Link>
+                <Link to="add-book">Add Books</Link>
               </li>
               <li>
-                <Link>Edit Books</Link>
+                <Link to="edit-book">Edit Books</Link>
               </li>
             </div>
             <div className="flex justify-evenly gap-4">
