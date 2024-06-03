@@ -35,7 +35,10 @@ const Register = () => {
   }, [user, from, navigate]);
   return (
     <div className="h-screen">
-      <form onSubmit={handleRegister} className="max-w-sm mx-auto mt-40">
+      <form
+        onSubmit={handleRegister}
+        className="w-full md:max-w-sm lg:max-w-sm p-4 mx-auto mt-40"
+      >
         <div className="mb-5">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Your email
@@ -96,7 +99,7 @@ const Register = () => {
             Login with social account
           </h2>
         </div>
-        <div className="grid grid-cols-2 gap-3 mb-4">
+        <div className="grid grid-cols-2 gap-3 mb-4 p-4">
           <GoogleLogin />
           <GithubLogin />
         </div>
