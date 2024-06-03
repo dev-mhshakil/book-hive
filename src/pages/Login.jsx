@@ -1,12 +1,35 @@
 // import { Link } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import GithubLogin from "../components/login_registration/GithubLogin";
 import GoogleLogin from "../components/login_registration/GoogleLogin";
+import useAuth from "../hooks/useAuth";
+import { useEffect } from "react";
 
 const Login = () => {
+  const { login, user } = useAuth();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location?.state?.from?.pathname || "/";
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    login(email, password).then((result) => console.log(result));
+  };
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, navigate, from]);
   return (
     <div className="h-screen">
-      <form className="max-w-sm mx-auto mt-40">
+      <form onSubmit={handleLogin} className="max-w-sm mx-auto mt-40">
         <div className="mb-5">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Your email

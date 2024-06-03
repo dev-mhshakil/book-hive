@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
   return (
     <div className="navbar bg-secondary sticky z-10">
       <div className="navbar-start">
@@ -100,7 +102,7 @@ const Navbar = () => {
           <span className="text-primary">Hive</span>
         </NavLink>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden lg:flex ">
         <ul className="menu menu-horizontal px-1 text-white">
           <li>
             <NavLink
@@ -139,24 +141,40 @@ const Navbar = () => {
               About Us
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/login" activeClassName="active">
-              Login
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/register"
-              activeClassName="active "
-              //   className={({ isActive }) =>
-              //     isActive ? "bg-primary text-white" : " text-white"
-              //   }
-            >
-              Register
-            </NavLink>
-          </li>
+          {!user && (
+            <>
+              <li>
+                <NavLink to="/login" activeClassName="active">
+                  Login
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/register"
+                  activeClassName="active "
+                  //   className={({ isActive }) =>
+                  //     isActive ? "bg-primary text-white" : " text-white"
+                  //   }
+                >
+                  Register
+                </NavLink>
+              </li>
+            </>
+          )}
+
+          {user && (
+            <>
+              <li>
+                <NavLink>Dashboard</NavLink>
+              </li>
+              <li>
+                <NavLink to={() => logOut()}>Logout</NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
+
       <div className="flex gap-3 navbar-end">
         <div className="dropdown dropdown-end">
           <div
@@ -167,10 +185,11 @@ const Navbar = () => {
             <div className="w-10 rounded-full">
               <img
                 alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                src={user?.photoURL || "/placeholder.jpg"}
               />
             </div>
           </div>
+
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"

@@ -1,9 +1,15 @@
 import { FcGoogle } from "react-icons/fc";
+import useAuth from "../../hooks/useAuth";
 
 const GoogleLogin = () => {
+  const { googleLogin } = useAuth();
+
+  const handleGoogleLogin = () => {
+    googleLogin().then((result) => console.log(result));
+  };
   return (
     <button
-      //   onClick={handleGoogleLogin}
+      onClick={handleGoogleLogin}
       className="btn hover:btn-primary hover:text-white bg-white w-full"
     >
       <div className="flex items-center gap-2">
