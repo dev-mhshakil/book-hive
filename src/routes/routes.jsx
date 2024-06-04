@@ -13,6 +13,8 @@ import EditBook from "../components/dashboard/EditBook";
 import AddBook from "../components/dashboard/AddBook";
 import CategoryBooks from "../components/categories/CategoryBooks";
 import AllCategories from "../components/categories/AllCategories";
+import PrivateRoute from "./PrivateRoute";
+import ManageAllCategory from "../components/dashboard/ManageAllCategory";
 
 const router = createBrowserRouter([
   {
@@ -57,15 +59,35 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Dashboard />,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
       },
       {
         path: "manage-all-books",
-        element: <ManageAllBooks />,
+        element: (
+          <PrivateRoute>
+            <ManageAllBooks />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "manage-all-categories",
+        element: (
+          <PrivateRoute>
+            <ManageAllCategory />
+          </PrivateRoute>
+        ),
       },
       {
         path: "edit-book/:id",
-        element: <EditBook />,
+        element: (
+          <PrivateRoute>
+            <EditBook />
+          </PrivateRoute>
+        ),
       },
       {
         path: "add-book",

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import BooksRow from "./BooksRow";
 
 const ManageAllBooks = () => {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState();
 
   useEffect(() => {
     async function load() {

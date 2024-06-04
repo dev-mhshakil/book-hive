@@ -38,9 +38,6 @@ const DashboardLayout = () => {
               <li>
                 <Link to="add-book">Add Books</Link>
               </li>
-              <li>
-                <Link to="edit-book">Edit Books</Link>
-              </li>
             </div>
             <div className="flex justify-evenly gap-4">
               <Link to="/" className="btn bg-secondary text-white">
