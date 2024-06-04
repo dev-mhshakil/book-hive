@@ -47,15 +47,16 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/reading-list" className="">
-                My Reading List
+              <Link to="/categories" className="">
+                Categories
               </Link>
             </li>
             <li>
-              <Link to="/about" className="">
-                About Us
+              <Link to="#" className="">
+                My Reading List
               </Link>
             </li>
+
             {!user && (
               <>
                 <li>
@@ -100,15 +101,16 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/reading-list" className="visited:text-white">
-              My Reading List
+            <Link to="/categories" className="visited:text-white">
+              Categories
             </Link>
           </li>
           <li>
-            <Link to="/about" className="visited:text-white">
-              About Us
+            <Link to="#" className="visited:text-white">
+              My Reading List
             </Link>
           </li>
+
           {!user && (
             <>
               <li>

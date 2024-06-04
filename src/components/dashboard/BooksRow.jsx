@@ -1,7 +1,20 @@
+/* eslint-disable no-unused-vars */
+import axios from "axios";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const BooksRow = ({ book, index }) => {
+  const handleDelete = async (id) => {
+    await axios
+      .delete(`http://localhost:5000/books/${id}`)
+      .then(function (response) {
+        if (response?.status == 200) {
+          toast.success("Recipe Deleted Successfully");
+        }
+      });
+  };
   return (
     <tr>
       <td>{index}</td>
@@ -15,7 +28,10 @@ const BooksRow = ({ book, index }) => {
         >
           Edit
         </Link>
-        <button className="btn btn-error text-white btn-sm btn-danger">
+        <button
+          onClick={() => handleDelete(book?._id)}
+          className="btn btn-error text-white btn-sm btn-danger"
+        >
           Delete
         </button>
       </td>

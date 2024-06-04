@@ -11,6 +11,8 @@ import Dashboard from "../pages/Dashboard";
 import ManageAllBooks from "../components/dashboard/ManageAllBooks";
 import EditBook from "../components/dashboard/EditBook";
 import AddBook from "../components/dashboard/AddBook";
+import CategoryBooks from "../components/categories/CategoryBooks";
+import AllCategories from "../components/categories/AllCategories";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: "/books/details/:id",
         element: <BookDetails />,
+      },
+      {
+        path: "/categories",
+        element: <AllCategories />,
+      },
+      {
+        path: "/category/:id",
+        element: <CategoryBooks />,
       },
       {
         path: "/login",

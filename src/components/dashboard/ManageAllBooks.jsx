@@ -12,10 +12,10 @@ const ManageAllBooks = () => {
       });
     }
     load();
-  }, []);
+  }, [books]);
 
   return (
-    <div className="overflow-x-auto w-full px-16 mt-10">
+    <div className="overflow-x-auto w-full px-2 md:px-16 lg:px-16 mt-10">
       <h1 className="text-4xl mb-4">Manage All Books</h1>
       <table className="table table-zebra">
         {/* head */}

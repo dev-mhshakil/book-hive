@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 const BooksCard = ({ book }) => {
   return (
     <div>
-      <div className="w-full h-[600px] p-6 rounded-md shadow-md">
+      <div className="w-full h-[600px] lg:h-[670px] p-6 rounded-md shadow-md">
         <img
-          src="https://source.unsplash.com/random/300x300/?1"
+          src={book?.image}
           alt=""
           className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
         />
@@ -15,17 +15,17 @@ const BooksCard = ({ book }) => {
           <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-600">
             Book
           </span>
-          <div className="h-16">
+          <div className="h-14">
             <h2 className="text-xl font-semibold tracking-wide">
               {book.title}
             </h2>
           </div>
         </div>
-        <p className="pb-2 text-primary">{book.author}</p>
-        <p>{book.description}</p>
-        <div className="mt-3 flex justify-between items-center">
+        <p className="pb-2 text-primary ">{book.author}</p>
+        <p className="h-16">{book.description}</p>
+        <div className="mt-5 lg:mt-20 flex justify-between items-center">
           <Link
-            to={`/books/details/${book?.id}`}
+            to={`/books/details/${book?._id}`}
             className="btn bg-secondary text-white rounded-sm"
           >
             Details

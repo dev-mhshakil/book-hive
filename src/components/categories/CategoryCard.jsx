@@ -1,7 +1,12 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
-const CategoryCard = ({ item }) => {
+const CategoryCard = ({ category }) => {
   return (
-    <div className="w-full p-6 rounded-md shadow-md">
+    <Link
+      to={`/category/${category?.name}`}
+      className="w-full p-6 rounded-md shadow-md hover:cursor-pointer"
+    >
       <img
         src="https://source.unsplash.com/random/300x300/?1"
         alt=""
@@ -11,10 +16,12 @@ const CategoryCard = ({ item }) => {
         <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-600">
           Book
         </span>
-        <h2 className="text-xl font-semibold tracking-wide">{item.name}</h2>
+        <h2 className="text-xl font-semibold tracking-wide">
+          {category?.name}
+        </h2>
       </div>
-      <p className="dark:text-gray-800">{item.description}</p>
-    </div>
+      <p className="dark:text-gray-800">{category?.description}</p>
+    </Link>
   );
 };
 
