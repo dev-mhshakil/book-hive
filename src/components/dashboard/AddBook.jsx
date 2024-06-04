@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 const AddBook = () => {
   const [categories, setCategories] = useState();
 
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
     async function load() {
       const categoriesData = await axios
@@ -41,7 +43,11 @@ const AddBook = () => {
     };
 
     await axios
-      .post("http://localhost:5000/books", bookInfo)
+      .post("http://localhost:5000/books", bookInfo, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then(function (response) {
         if (response.status === 200) {
           form.reset();

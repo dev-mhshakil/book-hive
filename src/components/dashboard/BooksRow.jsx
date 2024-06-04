@@ -6,9 +6,14 @@ import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const BooksRow = ({ book, index }) => {
+  const token = localStorage.getItem("token");
   const handleDelete = async (id) => {
     await axios
-      .delete(`http://localhost:5000/books/${id}`)
+      .delete(`http://localhost:5000/books/${id}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then(function (response) {
         if (response?.status == 200) {
           toast.success("Recipe Deleted Successfully");

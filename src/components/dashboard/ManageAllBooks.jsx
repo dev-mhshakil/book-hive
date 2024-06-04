@@ -5,14 +5,22 @@ import BooksRow from "./BooksRow";
 const ManageAllBooks = () => {
   const [books, setBooks] = useState();
 
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
     async function load() {
-      await axios.get("http://localhost:5000/books").then(function (response) {
-        setBooks(response?.data);
-      });
+      await axios
+        .get("http://localhost:5000/books", {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then(function (response) {
+          setBooks(response?.data);
+        });
     }
     load();
-  }, [books]);
+  }, [books, token]);
 
   return (
     <div className="overflow-x-auto w-full px-2 md:px-16 lg:px-16 mt-10">

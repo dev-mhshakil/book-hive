@@ -11,6 +11,8 @@ const EditBook = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
     async function load() {
       const bookData = await axios
@@ -57,11 +59,18 @@ const EditBook = () => {
     };
 
     await axios
-      .patch(`http://localhost:5000/books/${id}`, bookInfo)
+      .patch(`http://localhost:5000/books/${id}`, bookInfo, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then(function (response) {
         if (response?.status === 200) {
           toast.success("Update Complete");
         }
+      })
+      .catch(function (error) {
+        toast.error("Failed to update book");
       });
   };
 

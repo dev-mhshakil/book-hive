@@ -7,13 +7,19 @@ const EditProfile = () => {
   const userEmail = useParams();
   const [user, setUser] = useState();
 
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/user/get/${userEmail?.id}`)
+      .get(`http://localhost:5000/user/get/${userEmail?.id}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then(function (response) {
         setUser(response?.data);
       });
-  }, [userEmail]);
+  }, [userEmail, token]);
 
   const handleProfile = (e) => {
     e.preventDefault();
@@ -33,9 +39,12 @@ const EditProfile = () => {
     };
 
     axios
-      .patch(`http://localhost:5000/user/${user?.email}`, userInfo)
+      .patch(`http://localhost:5000/user/${user?.email}`, userInfo, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then(function (response) {
-        console.log(response);
         if (response?.status === 200) {
           toast.success("Profile has been updated.");
         } else {

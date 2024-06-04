@@ -16,6 +16,7 @@ const GithubLogin = () => {
         axios
           .post("http://localhost:5000/user", userInfo)
           .then(function (response) {
+            localStorage.setItem("token", response?.data?.token);
             if (response === 400) {
               toast.error("Email already registered.");
             } else if (response === 201) {
