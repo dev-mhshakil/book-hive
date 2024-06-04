@@ -15,6 +15,8 @@ import CategoryBooks from "../components/categories/CategoryBooks";
 import AllCategories from "../components/categories/AllCategories";
 import PrivateRoute from "./PrivateRoute";
 import ManageAllCategory from "../components/dashboard/ManageAllCategory";
+import MyReadingList from "../pages/MyReadingList";
+import EditProfile from "../components/dashboard/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/category/:id",
         element: <CategoryBooks />,
+      },
+      {
+        path: "/my-reading-list",
+        element: <MyReadingList />,
       },
       {
         path: "/login",
@@ -91,7 +97,19 @@ const router = createBrowserRouter([
       },
       {
         path: "add-book",
-        element: <AddBook />,
+        element: (
+          <PrivateRoute>
+            <AddBook />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "profile/edit/:id",
+        element: (
+          <PrivateRoute>
+            <EditProfile />
+          </PrivateRoute>
+        ),
       },
     ],
   },

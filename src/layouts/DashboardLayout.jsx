@@ -10,7 +10,7 @@ const DashboardLayout = () => {
     <div>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
+        <div className="drawer-content p-16">
           {/* Page content here */}
           <Outlet />
           <label
@@ -29,6 +29,9 @@ const DashboardLayout = () => {
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content flex flex-col justify-between">
             {/* Sidebar content here */}
             <div>
+              <li>
+                <Link to="/dashboard">Profile</Link>
+              </li>
               <li>
                 <Link to="manage-all-books">Manage All Books</Link>
               </li>

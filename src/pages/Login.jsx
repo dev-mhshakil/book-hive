@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // import { Link } from "react-router-dom";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import GithubLogin from "../components/login_registration/GithubLogin";
@@ -20,7 +21,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    login(email, password).then((result) => console.log(result));
+    login(email, password).then((result) => {});
   };
   useEffect(() => {
     if (user?.email) {
