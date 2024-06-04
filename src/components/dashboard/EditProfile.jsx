@@ -11,7 +11,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     axios
-      .get(`https://book-hive-server.vercel.app/user/get/${userEmail?.id}`, {
+      .get(`https://book-hive-server.onrender.com/user/get/${userEmail?.id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -40,7 +40,7 @@ const EditProfile = () => {
 
     axios
       .patch(
-        `https://book-hive-server.vercel.app/user/${user?.email}`,
+        `https://book-hive-server.onrender.com/user/${user?.email}`,
         userInfo,
         {
           headers: {

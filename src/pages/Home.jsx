@@ -15,13 +15,13 @@ const Home = () => {
   useEffect(() => {
     async function load() {
       const categoriesRes = await fetch(
-        "https://book-hive-server.vercel.app/categories"
+        "https://book-hive-server.onrender.com/categories"
       );
       const categoriesData = await categoriesRes.json();
       setCategories(categoriesData);
 
       const booksData = await axios
-        .get("https://book-hive-server.vercel.app/books")
+        .get("https://book-hive-server.onrender.com/books")
         .then(function (response) {
           setBooks(response?.data);
         });

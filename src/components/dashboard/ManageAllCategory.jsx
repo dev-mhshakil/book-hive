@@ -8,7 +8,7 @@ const ManageAllCategory = () => {
   useEffect(() => {
     async function load() {
       await axios
-        .get("https://book-hive-server.vercel.app/categories")
+        .get("https://book-hive-server.onrender.com/categories")
         .then(function (response) {
           setCategories(response?.data);
         });

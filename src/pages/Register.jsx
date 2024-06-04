@@ -30,7 +30,7 @@ const Register = () => {
             name: result?.user?.displayName,
           };
           axios
-            .post("https://book-hive-server.vercel.app/user", userInfo)
+            .post("https://book-hive-server.onrender.com/user", userInfo)
             .then(function (response) {
               if (response === 400) {
                 toast.error("Email already registered.");

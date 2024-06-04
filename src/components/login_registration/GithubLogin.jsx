@@ -14,7 +14,7 @@ const GithubLogin = () => {
           photoURL: result?.user?.photoURL,
         };
         axios
-          .post("https://book-hive-server.vercel.app/user", userInfo)
+          .post("https://book-hive-server.onrender.com/user", userInfo)
           .then(function (response) {
             localStorage.setItem("token", response?.data?.token);
             if (response === 400) {

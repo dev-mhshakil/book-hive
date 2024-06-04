@@ -11,7 +11,7 @@ const AddBook = () => {
   useEffect(() => {
     async function load() {
       const categoriesData = await axios
-        .get("https://book-hive-server.vercel.app/categories")
+        .get("https://book-hive-server.onrender.com/categories")
         .then(function (resposnse) {
           setCategories(resposnse?.data);
         });
@@ -43,7 +43,7 @@ const AddBook = () => {
     };
 
     await axios
-      .post("https://book-hive-server.vercel.app/books", bookInfo, {
+      .post("https://book-hive-server.onrender.com/books", bookInfo, {
         headers: {
           authorization: `Bearer ${token}`,
         },

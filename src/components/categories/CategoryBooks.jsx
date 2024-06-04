@@ -12,7 +12,7 @@ const CategoryBooks = () => {
   useEffect(() => {
     async function load() {
       const data = await axios
-        .get(`https://book-hive-server.vercel.app/category/${id?.id}`)
+        .get(`https://book-hive-server.onrender.com/category/${id?.id}`)
         .then(function (response) {
           setCategoryBooks(response?.data);
         });
