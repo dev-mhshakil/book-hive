@@ -13,7 +13,7 @@ const BookDetails = () => {
   useEffect(() => {
     async function load() {
       const bookData = await axios
-        .get(`http://localhost:5000/books/${bookId}`)
+        .get(`https://book-hive-server.vercel.app/books/${bookId}`)
         .then(function (response) {
           setBook(response?.data);
         });

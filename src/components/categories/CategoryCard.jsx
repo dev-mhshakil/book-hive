@@ -8,7 +8,7 @@ const CategoryCard = ({ category }) => {
       className="w-full p-6 rounded-md shadow-md hover:cursor-pointer"
     >
       <img
-        src="https://source.unsplash.com/random/300x300/?1"
+        src={category?.image}
         alt=""
         className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
       />

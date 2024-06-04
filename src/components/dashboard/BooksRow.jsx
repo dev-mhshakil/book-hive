@@ -9,7 +9,7 @@ const BooksRow = ({ book, index }) => {
   const token = localStorage.getItem("token");
   const handleDelete = async (id) => {
     await axios
-      .delete(`http://localhost:5000/books/${id}`, {
+      .delete(`https://book-hive-server.vercel.app/books/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },

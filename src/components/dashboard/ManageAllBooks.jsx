@@ -10,7 +10,7 @@ const ManageAllBooks = () => {
   useEffect(() => {
     async function load() {
       await axios
-        .get("http://localhost:5000/books", {
+        .get("https://book-hive-server.vercel.app/books", {
           headers: {
             authorization: `Bearer ${token}`,
           },
