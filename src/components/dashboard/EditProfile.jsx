@@ -11,7 +11,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     axios
-      .get(`https://book-hive-server.onrender.com/user/get/${userEmail?.id}`, {
+      .get(`http://localhost:5000/user/get/${userEmail?.id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -39,15 +39,11 @@ const EditProfile = () => {
     };
 
     axios
-      .patch(
-        `https://book-hive-server.onrender.com/user/${user?.email}`,
-        userInfo,
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .patch(`http://localhost:5000/user/${user?.email}`, userInfo, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then(function (response) {
         if (response?.status === 200) {
           toast.success("Profile has been updated.");

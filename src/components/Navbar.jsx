@@ -51,11 +51,6 @@ const Navbar = () => {
                 Categories
               </Link>
             </li>
-            <li>
-              <Link to="/my-reading-list" className="">
-                My Reading List
-              </Link>
-            </li>
 
             {!user && (
               <>
@@ -73,6 +68,11 @@ const Navbar = () => {
             )}
             {user && (
               <>
+                <li>
+                  <Link to="/my-reading-list" className="">
+                    My Reading List
+                  </Link>
+                </li>
                 <li>
                   <Link to="/dashboard">Dashboard</Link>
                 </li>
@@ -105,11 +105,6 @@ const Navbar = () => {
               Categories
             </Link>
           </li>
-          <li>
-            <Link to="/my-reading-list" className="visited:text-white">
-              My Reading List
-            </Link>
-          </li>
 
           {!user && (
             <>
@@ -132,6 +127,11 @@ const Navbar = () => {
 
           {user && (
             <>
+              <li>
+                <Link to="/my-reading-list" className="visited:text-white">
+                  My Reading List
+                </Link>
+              </li>
               <li>
                 <Link to="/dashboard">Dashboard</Link>
               </li>

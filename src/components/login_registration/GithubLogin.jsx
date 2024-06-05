@@ -14,7 +14,7 @@ const GithubLogin = () => {
           photoURL: result?.user?.photoURL,
         };
         axios
-          .post("https://book-hive-server.onrender.com/user", userInfo)
+          .post("http://localhost:5000/user", userInfo)
           .then(function (response) {
             localStorage.setItem("token", response?.data?.token);
             if (response === 400) {

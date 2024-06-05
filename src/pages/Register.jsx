@@ -30,7 +30,7 @@ const Register = () => {
             name: result?.user?.displayName,
           };
           axios
-            .post("https://book-hive-server.onrender.com/user", userInfo)
+            .post("http://localhost:5000/user", userInfo)
             .then(function (response) {
               if (response === 400) {
                 toast.error("Email already registered.");

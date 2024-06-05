@@ -11,7 +11,7 @@ const AddBook = () => {
   useEffect(() => {
     async function load() {
       const categoriesData = await axios
-        .get("https://book-hive-server.onrender.com/categories")
+        .get("http://localhost:5000/categories")
         .then(function (resposnse) {
           setCategories(resposnse?.data);
         });
@@ -43,7 +43,7 @@ const AddBook = () => {
     };
 
     await axios
-      .post("https://book-hive-server.onrender.com/books", bookInfo, {
+      .post("http://localhost:5000/books", bookInfo, {
         headers: {
           authorization: `Bearer ${token}`,
         },

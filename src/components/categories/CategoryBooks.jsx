@@ -12,7 +12,7 @@ const CategoryBooks = () => {
   useEffect(() => {
     async function load() {
       const data = await axios
-        .get(`https://book-hive-server.onrender.com/category/${id?.id}`)
+        .get(`http://localhost:5000/category/${id?.id}`)
         .then(function (response) {
           setCategoryBooks(response?.data);
         });

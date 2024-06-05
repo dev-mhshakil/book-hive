@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const CategoryRow = ({ category, index }) => {
   //     const handleDelete = async (id) => {
   //     await axios
-  //       .delete(`https://book-hive-server.onrender.com/category/${id}`)
+  //       .delete(`http://localhost:5000/category/${id}`)
   //       .then(function (response) {
   //         if (response?.status == 200) {
   //           toast.success("Recipe Deleted Successfully");
