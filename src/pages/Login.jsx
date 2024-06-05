@@ -31,7 +31,7 @@ const Login = () => {
           photoURL: result?.user?.photoURL,
         };
         axios
-          .post("http://localhost:5000/user", userInfo)
+          .post("https://book-hive-server.onrender.com/user", userInfo)
           .then(function (response) {
             console.log(response?.data);
             localStorage.setItem("token", response?.data?.token);

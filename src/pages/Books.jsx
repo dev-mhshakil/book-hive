@@ -10,7 +10,9 @@ const Books = () => {
 
   useEffect(() => {
     async function load() {
-      const data = await axios.get("http://localhost:5000/books");
+      const data = await axios.get(
+        "https://book-hive-server.onrender.com/books"
+      );
       setBooks(data?.data);
     }
     load();

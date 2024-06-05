@@ -56,7 +56,7 @@ Key components include:
    npm run dev
    ```
 
-The server will be running on `http://localhost:5000` or `http://localhost:5173/`.
+The server will be running on `https://book-hive-server.onrender.com` or `http://localhost:5173/`.
 
 ## Technologies
 
