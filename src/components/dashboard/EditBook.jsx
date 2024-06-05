@@ -16,14 +16,14 @@ const EditBook = () => {
   useEffect(() => {
     async function load() {
       const bookData = await axios
-        .get(`https://book-hive-server.onrender.com/books/${id}`)
+        .get(`http://localhost:5000/books/${id}`)
         .then(function (response) {
           setBook(response?.data);
           setSelectedCategory(response?.data?.category);
         });
 
       const categoriesData = await axios
-        .get("https://book-hive-server.onrender.com/categories")
+        .get("http://localhost:5000/categories")
         .then(function (response) {
           setCategories(response?.data);
         });
@@ -59,7 +59,7 @@ const EditBook = () => {
     };
 
     await axios
-      .patch(`https://book-hive-server.onrender.com/books/${id}`, bookInfo, {
+      .patch(`http://localhost:5000/books/${id}`, bookInfo, {
         headers: {
           authorization: `Bearer ${token}`,
         },

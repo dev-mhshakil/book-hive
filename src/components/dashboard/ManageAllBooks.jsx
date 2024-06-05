@@ -10,7 +10,7 @@ const ManageAllBooks = () => {
   useEffect(() => {
     async function load() {
       await axios
-        .get("https://book-hive-server.onrender.com/books", {
+        .get("http://localhost:5000/books", {
           headers: {
             authorization: `Bearer ${token}`,
           },

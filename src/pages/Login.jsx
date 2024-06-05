@@ -5,6 +5,8 @@ import GithubLogin from "../components/login_registration/GithubLogin";
 import GoogleLogin from "../components/login_registration/GoogleLogin";
 import useAuth from "../hooks/useAuth";
 import { useEffect } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { login, user } = useAuth();
@@ -21,7 +23,26 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    login(email, password).then((result) => {});
+    login(email, password).then((result) => {
+      if (result?.user?.email) {
+        const userInfo = {
+          email: result?.user?.email,
+          name: result?.user?.displayName,
+          photoURL: result?.user?.photoURL,
+        };
+        axios
+          .post("http://localhost:5000/user", userInfo)
+          .then(function (response) {
+            console.log(response?.data);
+            localStorage.setItem("token", response?.data?.token);
+            if (response === 400) {
+              toast.error("Email already registered.");
+            } else if (response === 201) {
+              toast.success("Registration Complete.");
+            }
+          });
+      }
+    });
   };
   useEffect(() => {
     if (user?.email) {

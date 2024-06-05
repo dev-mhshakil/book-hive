@@ -9,7 +9,7 @@ const AllCategories = () => {
   useEffect(() => {
     async function load() {
       await axios
-        .get("https://book-hive-server.onrender.com/categories")
+        .get("http://localhost:5000/categories")
         .then(function (response) {
           setCategories(response?.data);
           console.log(response?.data);
