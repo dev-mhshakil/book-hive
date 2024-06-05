@@ -1,4 +1,4 @@
-# BookHive API
+# BookHive
 
 BookHive is a RESTful API designed to manage a collection of books and users' reading lists. This API allows users to fetch book details, manage their reading lists, and handle user authentication efficiently.
 
