@@ -18,7 +18,9 @@ const BookDetails = () => {
 
   useEffect(() => {
     async function loadBookData() {
-      const response = await axios.get(`http://localhost:5000/books/${bookId}`);
+      const response = await axios.get(
+        `https://book-hive-server.onrender.com/books/${bookId}`
+      );
       setBook(response?.data);
     }
     loadBookData();
@@ -28,7 +30,7 @@ const BookDetails = () => {
     async function loadBookStatus() {
       if (bookId && user?.email) {
         const response = await axios.get(
-          `http://localhost:5000/reading-list/status/${bookId}`
+          `https://book-hive-server.onrender.com/reading-list/status/${bookId}`
         );
         setBookStatus(response?.data);
       }
@@ -38,7 +40,7 @@ const BookDetails = () => {
 
   const handleReadingList = async (bookListId) => {
     const response = await axios.post(
-      `http://localhost:5000/reading-list/${bookListId}`,
+      `https://book-hive-server.onrender.com/reading-list/${bookListId}`,
       user,
       {
         headers: {

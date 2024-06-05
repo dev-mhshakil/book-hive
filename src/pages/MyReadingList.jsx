@@ -11,7 +11,9 @@ const MyReadingList = () => {
   useEffect(() => {
     async function load() {
       await axios
-        .get(`http://localhost:5000/reading-list/${user?.email}`)
+        .get(
+          `https://book-hive-server.onrender.com/reading-list/${user?.email}`
+        )
         .then(function (response) {
           setReadingListBooks(response?.data);
         });
